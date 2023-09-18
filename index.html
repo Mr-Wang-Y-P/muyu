@@ -232,6 +232,8 @@
         }
         if (!localStorage.getItem('muyuCount')) {
             localStorage.setItem('muyuCount', 0)
+            console.log(localStorage.getItem('muyuCount'));
+            document.getElementById("count").innerText = localStorage.getItem('muyuCount')
         }
         // 当天的敲木鱼次数
         if (!localStorage.getItem('todayTime')) {
@@ -250,6 +252,7 @@
         // 总的木鱼敲击次数
         if (!localStorage.getItem('muyuSumCount')) {
             localStorage.setItem('muyuSumCount', 0)
+            document.getElementById("countAll").innerText = localStorage.getItem('muyuSumCount')
         }
 
 
