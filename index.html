@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>敲木鱼</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .header {
+            height: 100%;
+            position: relative;
+            top: 10px;
+        }
+
+        h2 {
+
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .number {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .img {
+            width: 180px;
+            height: 180px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -90px;
+            margin-top: -90px;
+        }
+
+        .text {
+            position: absolute;
+            font-size: 20px;
+            top: 220px;
+            left: 50%;
+            margin-left: -20px;
+            transform: translateX(-50%);
+            text-align: center;
+            opacity: 0;
+            color: coral;
+            animation: fadeOut 4s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" id="header">
+        <h2> 功德</h2>
+        <div class="number">
+            今日：
+            <span class="count" id="count"></span>
+        </div>
+        <!-- <audio id="myAudio" src="./muyu.mp3" preload="auto"></audio> -->
+        <!-- <div class="text" id="text">
+            功德+1
+        </div> -->
+        <!-- <button onclick="addCount()">累加计数</button> -->
+        <div class="img" onclick="addCount()" id="img">
+            <img src="./muyu.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        document.getElementById("count").innerText = 0;
+        var img = document.getElementById("img")
+        var header = document.getElementById("header")
+        var myAudio = document.getElementById("myAudio");  
+        // var text = document.getElementById("text")
+        const addCount = () => {
+            var count = document.getElementById("count").innerHTML;
+            document.getElementById("count").innerText = parseInt(count) + 1;
+            img.style.zoom = '0.8'; // 放大  
+            setTimeout(() => {
+                img.style.zoom = '1'; // 还原大小  
+            }, 50)
+            // text.style.animation = 'fadeOut 3s ease-in-out'
+
+            var newElement = document.createElement("div");   
+            var audio = document.createElement("audio"); 
+            audio.src = './muyu.mp3'
+            audio.preload="auto"
+            newElement.innerHTML = "功德+1"; 
+            newElement.classList.add("text");
+            header.appendChild(newElement);
+            header.appendChild(audio);
+            audio.play();  
+        }
+
+    </script>
+</body>
+
+</html>
