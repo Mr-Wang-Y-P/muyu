@@ -177,12 +177,7 @@
     <button class="button2" id="musicButton" onclick="musicPlay()">音频播放</button>
     <script>
         let buttonPlay = false;
-        // 总的木鱼
-        document.getElementById("countAll").innerText = parseInt(localStorage.getItem('muyuSumCount'));
-        // let count =parseInt(localStorage.getItem('muyuCount')) 
-        // 当天
-        // console.log(count);
-        document.getElementById("count").innerText = parseInt(localStorage.getItem('muyuCount'));
+        
 
         var img = document.getElementById("img")
         var header = document.getElementById("header")
@@ -230,11 +225,7 @@
                 musicButton.innerText = "音频播放";
             }
         }
-        if (!localStorage.getItem('muyuCount')) {
-            localStorage.setItem('muyuCount', 0)
-            console.log(localStorage.getItem('muyuCount'));
-            document.getElementById("count").innerText = localStorage.getItem('muyuCount')
-        }
+       
         // 当天的敲木鱼次数
         if (!localStorage.getItem('todayTime')) {
             let timer = new Date()
@@ -242,7 +233,7 @@
         }
         else {
             // 不是同一天 当天木鱼次数清空
-            if (new Date().toLocaleDateString() !== localStorage.getItem('todayTime')) {
+            if (new Date().toLocaleDateString() != localStorage.getItem('todayTime')) {
                 let timer = new Date()
                 localStorage.setItem('todayTime', timer.toLocaleDateString())
                 localStorage.setItem('muyuCount', 0)
@@ -255,7 +246,17 @@
             document.getElementById("countAll").innerText = localStorage.getItem('muyuSumCount')
         }
 
-
+        if (!localStorage.getItem('muyuCount')) {
+            localStorage.setItem('muyuCount', 0)
+            // console.log(localStorage.getItem('muyuCount'));
+            document.getElementById("count").innerText = localStorage.getItem('muyuCount')
+        }
+        // 总的木鱼
+        document.getElementById("countAll").innerText = parseInt(localStorage.getItem('muyuSumCount'));
+        // let count =parseInt(localStorage.getItem('muyuCount')) 
+        // 当天
+        // console.log(count);
+        document.getElementById("count").innerText = parseInt(localStorage.getItem('muyuCount'));
         const addCount = () => {
             // var count = document.getElementById("count").innerHTML;
             document.getElementById("countAll").innerText = parseInt(document.getElementById("countAll").innerText) + 1;
