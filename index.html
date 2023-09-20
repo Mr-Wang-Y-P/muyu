@@ -7,8 +7,9 @@
     <meta name="baidu-site-verification" content="codeva-PwBGcvJs2Q" />
     <meta name="google-site-verification" content="1IpD___dqvhGy-FpgzbIaz2jNZkTEsNHs2oSzHmS0aw" />
     <meta name="msvalidate.01" content="98A2AD0F3D9CB4016ADAF75BE1CF1C5F" />
+    <meta name="360-site-verification" content="65ea56244d6b42154ea39c01c90e37f1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="敲木鱼"> 
+    <meta name="keywords" content="敲木鱼">
     <meta name="description" content="敲木鱼">
     <title>敲木鱼</title>
     <style>
@@ -21,19 +22,36 @@
         }
 
         .header {
-            height: 100%;
+            zoom: 1;
+            /* height: 100%; */
+            /* position: relative; */
+            /* top: 10px; */
+        }
+
+        .muyu {
+            /* max-width:200px; */
             position: relative;
-            top: 10px;
+            /* height: 400px; */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: inline-block;
+            top: 33%;
         }
 
         .wooden-fish-stick {
             display: none;
             z-index: 3;
-            left: 60px;
-            top: -450px;
-            position: relative;
+            /* left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -30px; */
+            position: absolute;
             width: 20px;
             height: 120px;
+            /* margin-left: -10px;
+             */
+            left: -20px;
+            top: -20px;
             background-color: #ffffff;
             border: 2px solid #cccccc;
             border-radius: 10px;
@@ -74,13 +92,13 @@
         }
 
         .img {
-            width: 180px;
-            height: 180px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -90px;
-            margin-top: -90px;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            /* top: 50%;
+            left: 50%; */
+            /* margin-left: -100px;
+            margin-top: -100px; */
         }
 
         .countAll {
@@ -112,9 +130,10 @@
 
             width: 80px;
             height: 40px;
-            position: absolute;
-            bottom: 50px;
-            left: 50px;
+            margin: 30px;
+            /* position: absolute; */
+            /* bottom: 50px;
+            left: 50px; */
         }
 
         .button1 {
@@ -125,9 +144,11 @@
             display: none;
             width: 80px;
             height: 40px;
-            position: absolute;
-            bottom: 50px;
-            left: 50px;
+            margin: 30px;
+            /* position: absolute; */
+            /* bottom: 50px;
+            left: 50px; */
+
         }
 
         .button2 {
@@ -137,9 +158,21 @@
             border-radius: 10px;
             width: 80px;
             height: 40px;
+            /* margin:30px; */
+            /* position: absolute; */
+            /* bottom: 50px;
+            left: 200px; */
+        }
+
+        .footerButton {
             position: absolute;
             bottom: 50px;
-            left: 200px;
+            left: 50%;
+            transform: translate(-50%);
+            display: flex;
+            align-items: center;
+            width: 200px;
+            justify-content: center;
         }
 
         @keyframes fadeOut {
@@ -151,6 +184,58 @@
             100% {
                 opacity: 0;
                 transform: translateY(-100px) scale(0);
+            }
+        }
+
+        @media screen and (max-width:400px) {
+
+            body .header,
+            .muyu,
+            .footerButton {
+                zoom: 1;
+            }
+
+            .text {
+                zoom: 1;
+            }
+
+            .wooden-fish-stick {
+                left: -20px;
+            }
+        }
+
+        @media screen and (max-width:1024px) and (min-width:400px) {
+
+            body .header,
+            .muyu,
+            .footerButton {
+                zoom: 1.2;
+            }
+
+            .text {
+                zoom: 1.2;
+            }
+
+            .wooden-fish-stick {
+                left: -30px;
+            }
+        }
+
+        @media screen and (min-width:1024px) {
+
+            body .header,
+            .muyu,
+            .footerButton {
+                zoom: 1.4;
+            }
+
+            .text {
+                top:150px;
+                zoom: 1.4;
+            }
+
+            .wooden-fish-stick {
+                left: -30px;
             }
         }
     </style>
@@ -172,17 +257,23 @@
 
 
     </div>
-    <div class="wooden-fish-stick" id="stick"></div>
-    <div class="img" onclick="addCount()" id="img">
-        <img src="./muyu.jpg" alt="">
+    <div class="muyu">
+        <div class="wooden-fish-stick" id="stick"></div>
+        <div class="img" onclick="addCount()" id="img">
+            <img src="./muyu.jpg" alt="">
+        </div>
     </div>
-    <button class="button" id="playButton" onclick="clickPlay()">自动敲击</button>
-    <button class="button1" id="stopButton" onclick="stopPlay()">停止敲击</button>
 
-    <button class="button2" id="musicButton" onclick="musicPlay()">音频播放</button>
+    <div class="footerButton">
+        <button class="button" id="playButton" onclick="clickPlay()">自动敲击</button>
+        <button class="button1" id="stopButton" onclick="stopPlay()">停止敲击</button>
+
+        <button class="button2" id="musicButton" onclick="musicPlay()">音频播放</button>
+    </div>
+
     <script>
         let buttonPlay = false;
-        
+
 
         var img = document.getElementById("img")
         var header = document.getElementById("header")
@@ -201,14 +292,14 @@
             stopButton.style.display = 'block'
             playButton.style.display = 'none'
             stick.style.display = 'block'
-            stick.style.animation = 'rotate 1s infinite  linear'; 
+            stick.style.animation = 'rotate 1s infinite  linear';
             countInterval = setInterval(addCount, 1000); // 每秒执行一次 addCount 
         }
         const stopPlay = () => {
             stopButton.style.display = 'none'
             playButton.style.display = 'block'
             stick.style.display = 'none'
-            stick.style.animation = ''; 
+            stick.style.animation = '';
             clearInterval(countInterval);
         }
         const musicPlay = () => {
@@ -230,7 +321,7 @@
                 musicButton.innerText = "音频播放";
             }
         }
-       
+
         // 当天的敲木鱼次数
         if (!localStorage.getItem('todayTime')) {
             let timer = new Date()
@@ -269,9 +360,15 @@
             // console.log(document.getElementById("count").innerText);
             localStorage.setItem('muyuSumCount', document.getElementById("countAll").innerText)
             localStorage.setItem('muyuCount', document.getElementById("count").innerText)
-            img.style.zoom = '0.8'; // 放大  
+
+            // let style = window.getComputedStyle(header);
+            // console.log(style.getPropertyValue('zoom'));
+            // let zoom = style.getPropertyValue('zoom')
+            // console.log(zoom)
+            // console.log(0.8 * zoom)
+            img.style.zoom = `${0.8}`; // 放大  
             setTimeout(() => {
-                img.style.zoom = '1'; // 还原大小  
+                img.style.zoom = `${1}`; // 还原大小  
             }, 50)
 
             var newElement = document.createElement("div");
